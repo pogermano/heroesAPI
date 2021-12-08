@@ -58,18 +58,11 @@ public class HeroesController {
 
 
     @DeleteMapping(HEROES_ENDPOINT_LOCAL + "/{id}")
-    @ResponseStatus(code = HttpStatus.OK)
+    @ResponseStatus(code = HttpStatus.NOT_FOUND)
     public Mono<HttpStatus> deletebyIDHero(@PathVariable String id) {
-        try{
-            log.info("Deleting the hero with id {}", id);
-            heroesService.deletebyIDHero(id);
-            return Mono.just(HttpStatus.OK);
-
-        }catch (Exception e){
-            log.error("Erro ao deletar ID inexistente", e);
-            return Mono.just(HttpStatus.NOT_FOUND);
-        }
-
+        heroesService.deletebyIDHero(id);
+        log.info("Deleting the hero with id {}", id);
+        return Mono.just(HttpStatus.NOT_FOUND);
     }
 
 
