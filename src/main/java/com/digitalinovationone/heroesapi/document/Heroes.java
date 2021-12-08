@@ -11,11 +11,12 @@ import org.springframework.data.annotation.Id;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-//import static com.digitalinovationone.heroesapi.constants.HeroesConstant.TABLE_NAME;
+import static com.digitalinovationone.heroesapi.constants.HeroesConstant.TABLE_NAME;
+
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-@DynamoDBTable(tableName = "Heroes_Table")
+@DynamoDBTable(tableName = TABLE_NAME)
 public class Heroes {
 
     @Id
@@ -31,35 +32,5 @@ public class Heroes {
     @DynamoDBAttribute (attributeName = "films")
     private Long films;
 
-    public String getId() {
-        return id;
-    }
 
-    public void setId(String id) {
-        this.id = id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getUniverse() {
-        return universe;
-    }
-
-    public void setUniverse(String universe) {
-        this.universe = universe;
-    }
-
-    public Long getFilms() {
-        return films;
-    }
-
-    public void setFilms(Long films) {
-        this.films = films;
-    }
 }
